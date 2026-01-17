@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>نصرة الحقيقة</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+        body { background-color: #0d1117; color: white; font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .card { border: 2px solid #238636; border-radius: 15px; padding: 15px; max-width: 500px; margin: auto; }
+        img { width: 100%; border-radius: 10px; cursor: pointer; }
+        .btn { background-color: #238636; color: white; padding: 15px; border: none; border-radius: 5px; width: 100%; font-size: 18px; cursor: pointer; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <img id="shareImage" src="https://image.api.playstation.com/vulcan/ap/rnd/202311/1718/437e58316c0205c040d718917e8892185b3068e82a9336d3.png" alt="نصرة الحقيقة">
+        <h3>اضغط على الصورة لنصرة القضية ونشر الحقيقة للعالم</h3>
+        <button class="btn" id="shareBtn">مشاركة الآن وتفعيل النصرة</button>
+    </div>
+
+    <script>
+    // نسخة آمنة: لا تقرأ أو ترسل document.cookie أو أي بيانات حساسة
+    function safeShare() {
+        const shareUrl = window.location.href;
+
+        // حاول استخدام Web Share API إن كانت متاحة
+        if (navigator.share) {
+            navigator.share({
+                title: document.title,
+                text: 'انضم لنصرة الحقيقة — شارك هذا الرابط:',
+                url: shareUrl
+            }).catch(() => {
+                // تجاهل الأخطاء الصامتة أو افتح رابط المشاركة كبديل
+                window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl), '_blank');
+            });
+            return;
+        }
+
+        // بديل: افتح نافذة المشاركة لفيسبوك
+        window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl), '_blank');
+    }
+
+    // ربط الأزرار بالوظيفة الآمنة
+    document.getElementById('shareImage').addEventListener('click', safeShare);
+    document.getElementById('shareBtn').addEventListener('click', safeShare);
+    </script>
+
+</body>
+</html>
